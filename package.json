@@ -1,0 +1,20 @@
+{
+  "name": "aio",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/MrRumpel/aio.git",
+  "author": "Rumpel <hades137747575@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend/*"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^7.4.1"
+  },
+  "scripts": {
+    "dev": "lerna run dev"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "version": "1.0.0",
+  "packages": [
+    "backend",
+    "frontend/*"
+  ],
+  "useNx": false
+}
