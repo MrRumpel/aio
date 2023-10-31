@@ -13,6 +13,10 @@ const routes = [
     component: HomeView,
   },
   {
+    path: '/ref',
+    component: () => import('../pages/reactivity-api.vue'),
+  },
+  {
     path: '/son',
     component: _import('SonOne'),
   },
