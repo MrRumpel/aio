@@ -10,12 +10,15 @@ export const SiderLayoutComponent = defineComponent({
   setup: () => {
     const collapsed = ref<boolean>(false);
     const selectedKeys = ref<string[]>(['home']);
-
     const router = useRouter();
     return { router, collapsed, selectedKeys };
   },
   render() {
     const { router, collapsed, selectedKeys } = this;
+    const goto = (path: string) => {
+      // console.info(path);
+      router.push({ name: path });
+    };
     return (
       <a-layout style='min-height: 100vh'>
         <a-layout-sider v-model:collapsed={this.collapsed} collapsible>
@@ -24,7 +27,7 @@ export const SiderLayoutComponent = defineComponent({
             v-model:selectedKeys={this.selectedKeys}
             theme='dark'
             mode='inline'
-            onClick={({ key }: { key: string }) => router.push({ name: key })}
+            onClick={({ key }: { key: string }) => goto(key)}
           >
             {routes[1].children?.map((item, i) =>
               !item.meta?.hidden ? (

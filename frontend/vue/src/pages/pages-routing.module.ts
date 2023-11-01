@@ -5,11 +5,10 @@ import VueRouting from './vue/vue-routing.module';
 const pages: RouteRecordRaw[] = [
   {
     path: '/pages',
-    name: 'home',
+    name: 'pages',
     meta: {
       title: '主页',
     },
-    redirect: 'pages/home',
     component: SiderLayoutComponent,
     children: [
       {
