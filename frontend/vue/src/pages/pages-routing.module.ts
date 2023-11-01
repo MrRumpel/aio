@@ -1,5 +1,4 @@
 import { SiderLayoutComponent } from '@/components/layout/SiderLayoutComponent';
-import { defineAsyncComponent } from 'vue';
 import { type RouteRecordRaw } from 'vue-router';
 import VueRouting from './vue/vue-routing.module';
 

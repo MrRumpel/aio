@@ -1,71 +1,63 @@
 import { defineComponent } from 'vue';
 import { PieChartOutlined, DesktopOutlined, UserOutlined, TeamOutlined, FileOutlined } from '@ant-design/icons-vue';
 import { ref } from 'vue';
+import routes from '@/router';
+import { useRouter, type RouteLocationRaw, type RouteRecordRaw } from 'vue-router';
 
 export const SiderLayoutComponent = defineComponent({
   name: 'SiderLayoutComponent',
   component: [PieChartOutlined, DesktopOutlined, UserOutlined, TeamOutlined, FileOutlined],
   setup: () => {
     const collapsed = ref<boolean>(false);
-    const selectedKeys = ref<string[]>(['1']);
-    return { collapsed, selectedKeys };
+    const selectedKeys = ref<string[]>(['home']);
+
+    const router = useRouter();
+    return { router, collapsed, selectedKeys };
   },
   render() {
-    const { collapsed, selectedKeys } = this;
+    const { router, collapsed, selectedKeys } = this;
     return (
       <a-layout style='min-height: 100vh'>
         <a-layout-sider v-model:collapsed={this.collapsed} collapsible>
           <div class='logo' />
-          <a-menu v-model:selectedKeys={this.selectedKeys} theme='dark' mode='inline'>
-            <a-menu-item key='1'>
-              <PieChartOutlined />
-              <span>Option 1</span>
-            </a-menu-item>
-            <a-menu-item key='2'>
-              <DesktopOutlined />
-              <span>Option 2</span>
-            </a-menu-item>
-            <a-sub-menu key='sub1'>
-              {{
-                default: () => (
-                  <>
-                    <a-menu-item key='3'>Tom</a-menu-item>
-                    <a-menu-item key='4'>Bill</a-menu-item>
-                    <a-menu-item key='5'>Alex</a-menu-item>
-                  </>
-                ),
-                title: () => {
-                  return (
-                    <span>
-                      <UserOutlined />
-                      <span>User</span>
-                    </span>
-                  );
-                },
-              }}
-            </a-sub-menu>
-            <a-sub-menu key='sub2'>
-              {{
-                default: () => (
-                  <>
-                    <a-menu-item key='6'>Team 1</a-menu-item>
-                    <a-menu-item key='8'>Team 2</a-menu-item>
-                  </>
-                ),
-                title: () => (
-                  <>
-                    <span>
-                      <TeamOutlined />
-                      <span>Team</span>
-                    </span>
-                  </>
-                ),
-              }}
-            </a-sub-menu>
-            <a-menu-item key='9'>
-              <FileOutlined />
-              <span>File</span>
-            </a-menu-item>
+          <a-menu
+            v-model:selectedKeys={this.selectedKeys}
+            theme='dark'
+            mode='inline'
+            onClick={({ key }: { key: string }) => router.push({ name: key })}
+          >
+            {routes[1].children?.map((item, i) =>
+              !item.meta?.hidden ? (
+                item.children ? (
+                  <a-sub-menu key={item.name}>
+                    {{
+                      default: () => (
+                        <>
+                          {item.children?.map((subMenu, i) => (
+                            <a-menu-item key={subMenu.name}>{subMenu.meta?.title}</a-menu-item>
+                          ))}
+                        </>
+                      ),
+                      title: () => (
+                        <>
+                          <span>
+                            <TeamOutlined />
+                            <span>{item.meta?.title}</span>
+                          </span>
+                        </>
+                      ),
+                    }}
+                  </a-sub-menu>
+                ) : (
+                  <a-menu-item key={item.name}>
+                    <DesktopOutlined />
+                    <span>{item.meta?.title}</span>
+                  </a-menu-item>
+                )
+              ) : (
+                ''
+              )
+            )}
           </a-menu>
         </a-layout-sider>
         <a-layout>
