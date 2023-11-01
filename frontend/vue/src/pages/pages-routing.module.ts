@@ -1,6 +1,7 @@
 import { SiderLayoutComponent } from '@/components/layout/SiderLayoutComponent';
 import { defineAsyncComponent } from 'vue';
 import { type RouteRecordRaw } from 'vue-router';
+import VueRouting from './vue/vue-routing.module';
 
 const pages: RouteRecordRaw[] = [
   {
@@ -9,20 +10,21 @@ const pages: RouteRecordRaw[] = [
     meta: {
       title: '主页',
     },
-    redirect: 'pages/dashboard',
+    redirect: 'pages/home',
     component: SiderLayoutComponent,
     children: [
       {
-        path: 'dashboard',
-        name: 'dashboard',
+        path: 'home',
+        name: 'home',
         meta: {
           title: '主页',
         },
         component: () => import('./SonOne'),
       },
+      ...VueRouting,
     ],
   },
-  // { path: '/:(.*)*', redirect: 'pages/dashboard' },
+  { path: '/:(.*)*', redirect: 'pages/home' },
 ];
 
 export default pages;

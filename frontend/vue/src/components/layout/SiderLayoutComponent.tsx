@@ -55,7 +55,7 @@ export const SiderLayoutComponent = defineComponent({
                 title: () => (
                   <>
                     <span>
-                      <TeamOutlined/>
+                      <TeamOutlined />
                       <span>Team</span>
                     </span>
                   </>
@@ -75,8 +75,9 @@ export const SiderLayoutComponent = defineComponent({
               <a-breadcrumb-item>User</a-breadcrumb-item>
               <a-breadcrumb-item>Bill</a-breadcrumb-item>
             </a-breadcrumb>
-            <div style={{ padding: '24px', background: '#fff', minHeight: '360px' }}>Bill is a cat.</div>
-            <router-view />
+            <div style={{ padding: '24px', background: '#fff', minHeight: '360px' }}>
+              <router-view />
+            </div>
           </a-layout-content>
           <a-layout-footer style='text-align: center'>All In One ©2023 Created by Rumpel</a-layout-footer>
         </a-layout>
