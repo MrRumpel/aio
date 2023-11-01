@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue';
 
-defineComponent({
+export const BlankLayoutComponent = defineComponent({
   name: 'BlankLayoutComponent',
   render() {
     return <router-view />;

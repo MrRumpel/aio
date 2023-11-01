@@ -1,21 +1,18 @@
+import { SiderLayoutComponent } from '@/components/layout/SiderLayoutComponent';
 import HomeView from '../views/HomeView.vue';
 import { defineAsyncComponent } from 'vue';
+import type { RouteRecordRaw } from 'vue-router';
+import { BlankLayoutComponent } from '@/components/layout/BlankLayoutComponent';
+import pages from '@/pages/pages-routing.module';
 
-const _import = (name: string) => defineAsyncComponent(() => import(`../views/${name}.vue`));
+export const _import = (path: string) => defineAsyncComponent(() => import(`../pages/${path}.tsx`));
 
-const routes = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/home',
+    component: BlankLayoutComponent,
   },
-  {
-    path: '/home',
-    component: HomeView,
-  },
-  {
-    path: '/ref',
-    component: () => import('../pages/reactivity-api.vue'),
-  },
+  ...pages,
   {
     path: '/son',
     component: _import('SonOne'),
