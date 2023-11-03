@@ -2,7 +2,7 @@ import { defineComponent } from 'vue';
 import { PieChartOutlined, DesktopOutlined, UserOutlined, TeamOutlined, FileOutlined } from '@ant-design/icons-vue';
 import { ref } from 'vue';
 import routes from '@/router';
-import { useRouter, type RouteLocationRaw, type RouteRecordRaw } from 'vue-router';
+import { useRouter, type RouteLocationRaw, type RouteRecordRaw, useRoute } from 'vue-router';
 
 export const SiderLayoutComponent = defineComponent({
   name: 'SiderLayoutComponent',
@@ -11,10 +11,11 @@ export const SiderLayoutComponent = defineComponent({
     const collapsed = ref<boolean>(false);
     const selectedKeys = ref<string[]>(['home']);
     const router = useRouter();
-    return { router, collapsed, selectedKeys };
+    const route = useRoute();
+    return { router, route, collapsed, selectedKeys };
   },
   render() {
-    const { router, collapsed, selectedKeys } = this;
+    const { router, route, collapsed, selectedKeys } = this;
     const goto = (path: string) => {
       // console.info(path);
       router.push({ name: path });
@@ -67,8 +68,9 @@ export const SiderLayoutComponent = defineComponent({
           <a-layout-header style='background: #fff; padding: 0' />
           <a-layout-content style='margin: 0 16px'>
             <a-breadcrumb style='margin: 16px 0'>
-              <a-breadcrumb-item>User</a-breadcrumb-item>
-              <a-breadcrumb-item>Bill</a-breadcrumb-item>
+              {route.matched?.map((item, i) =>
+                i > 0 ? <a-breadcrumb-item>{item.meta?.title}</a-breadcrumb-item> : ''
+              )}
             </a-breadcrumb>
             <div style={{ padding: '24px', background: '#fff', minHeight: '360px' }}>
               <router-view />

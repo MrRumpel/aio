@@ -13,12 +13,20 @@ const VueRouting: RouteRecordRaw[] = [
     component: BlankLayoutComponent,
     children: [
       {
-        path: 'reactivity-fundamentals',
-        name: 'reactivity-fundamentals',
+        path: 'test-code',
+        name: 'test-code',
         meta: {
-          title: '响应式基础',
+          title: '测试代码',
         },
-        component: () => import('./reactivity-fundamentals'),
+        component: () => import('./testCode'),
+      },
+      {
+        path: 'reactivity-core',
+        name: 'reactivity-core',
+        meta: {
+          title: '响应式核心',
+        },
+        component: () => import('./md'),
       },
     ],
   },
