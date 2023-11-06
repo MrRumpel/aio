@@ -2,6 +2,7 @@ import { SiderLayoutComponent } from '@/components/layout/SiderLayoutComponent';
 import { type RouteRecordRaw } from 'vue-router';
 import VueRouting from './vue/vue-routing.module';
 import JsRouting from './js/js-routing.module';
+import CssRouting from './css/css-routing.module';
 
 const pages: RouteRecordRaw[] = [
   {
@@ -22,6 +23,7 @@ const pages: RouteRecordRaw[] = [
       },
       ...VueRouting,
       ...JsRouting,
+      ...CssRouting,
     ],
   },
   { path: '/:(.*)*', redirect: 'pages/home' },

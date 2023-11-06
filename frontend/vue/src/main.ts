@@ -6,7 +6,7 @@ import routes from './router';
 import { createRouter, createWebHistory } from 'vue-router';
 import 'ant-design-vue/dist/reset.css';
 
-const basename = process.env.NODE_ENV === 'production' ? '/demo-vite/' : '';
+const basename = process.env.NODE_ENV === 'production' ? '/aio-vue' : '';
 const app = createApp(App)
   .use(createRouter({ history: createWebHistory(basename), routes }))
   .use(Antd);

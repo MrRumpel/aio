@@ -3,25 +3,25 @@ import { SiderLayoutComponent } from '@/components/layout/SiderLayoutComponent.j
 import { defineAsyncComponent } from 'vue';
 import { type RouteRecordRaw } from 'vue-router';
 
-const JsRouting: RouteRecordRaw[] = [
+const CssRouting: RouteRecordRaw[] = [
   {
-    path: 'js',
-    name: 'jsRouting',
+    path: 'css',
+    name: 'cssRouting',
     meta: {
-      title: 'JS面试题',
+      title: 'CSS面试题',
     },
     component: BlankLayoutComponent,
     children: [
       {
-        path: 'compareConstVarLet',
-        name: 'compareConstVarLet',
+        path: 'compareVwAndPercent',
+        name: 'compareVwAndPercent',
         meta: {
-          title: '对比 Const Var Let',
+          title: '对比 Vw 和 百分比',
         },
-        component: () => import('./compareConstVarLet'),
+        component: () => import('./compareVwAndPercent'),
       },
     ],
   },
 ];
 
-export default JsRouting;
+export default CssRouting;

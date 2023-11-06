@@ -8,7 +8,7 @@ const VueRouting: RouteRecordRaw[] = [
     path: 'vue',
     name: 'vueRouting',
     meta: {
-      title: 'vue面试题',
+      title: 'VUE面试题',
     },
     component: BlankLayoutComponent,
     children: [
