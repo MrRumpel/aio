@@ -17,7 +17,7 @@ const pages: RouteRecordRaw[] = [
         meta: {
           title: '主页',
         },
-        component: () => import('./SonOne'),
+        component: () => import('./index'),
       },
       ...VueRouting,
     ],

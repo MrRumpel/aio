@@ -1,5 +1,4 @@
 import { SiderLayoutComponent } from '@/components/layout/SiderLayoutComponent';
-import HomeView from '../views/HomeView.vue';
 import { defineAsyncComponent } from 'vue';
 import type { RouteRecordRaw } from 'vue-router';
 import { BlankLayoutComponent } from '@/components/layout/BlankLayoutComponent';
