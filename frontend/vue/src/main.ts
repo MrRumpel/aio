@@ -1,6 +1,5 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import WujieVue from 'wujie-vue3';
 import Antd, { message } from 'ant-design-vue';
 import { App } from './App';
 import routes from './router';
@@ -10,7 +9,6 @@ import 'ant-design-vue/dist/reset.css';
 const basename = process.env.NODE_ENV === 'production' ? '/demo-vite/' : '';
 const app = createApp(App)
   .use(createRouter({ history: createWebHistory(basename), routes }))
-  .use(WujieVue)
   .use(Antd);
 
 // 配置全局消息
