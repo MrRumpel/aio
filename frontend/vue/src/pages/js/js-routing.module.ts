@@ -36,6 +36,14 @@ const JsRouting: RouteRecordRaw[] = [
         },
         component: () => import('./compareSetAndMap'),
       },
+      {
+        path: 'arraySpliceUsage',
+        name: 'arraySpliceUsage',
+        meta: {
+          title: '数组splice方法的使用',
+        },
+        component: () => import('./arraySpliceUsage'),
+      },
     ],
   },
 ];
