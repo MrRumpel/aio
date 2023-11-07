@@ -20,6 +20,14 @@ const JsRouting: RouteRecordRaw[] = [
         },
         component: () => import('./compareConstVarLet'),
       },
+      {
+        path: 'removeDuplicatesFromArray',
+        name: 'removeDuplicatesFromArray',
+        meta: {
+          title: '数组去重n种方法',
+        },
+        component: () => import('./removeDuplicatesFromArray'),
+      },
     ],
   },
 ];
