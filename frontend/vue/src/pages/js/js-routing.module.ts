@@ -28,6 +28,14 @@ const JsRouting: RouteRecordRaw[] = [
         },
         component: () => import('./removeDuplicatesFromArray'),
       },
+      {
+        path: 'compareSetAndMap',
+        name: 'compareSetAndMap',
+        meta: {
+          title: 'set和map的区别',
+        },
+        component: () => import('./compareSetAndMap'),
+      },
     ],
   },
 ];
