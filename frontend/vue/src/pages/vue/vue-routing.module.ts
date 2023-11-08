@@ -28,6 +28,14 @@ const VueRouting: RouteRecordRaw[] = [
         },
         component: () => import('./md'),
       },
+      {
+        path: 'reactiveRefTypeCheck',
+        name: 'reactiveRefTypeCheck',
+        meta: {
+          title: 'reactive和ref原理检测数据类型的方法',
+        },
+        component: () => import('./reactiveRefTypeCheck'),
+      },
     ],
   },
 ];
