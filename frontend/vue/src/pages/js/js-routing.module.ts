@@ -44,6 +44,14 @@ const JsRouting: RouteRecordRaw[] = [
         },
         component: () => import('./arraySpliceUsage'),
       },
+      {
+        path: 'arrayReduceUsage',
+        name: 'arrayReduceUsage',
+        meta: {
+          title: '数组reduce方法的使用',
+        },
+        component: () => import('./arrayReduceUsage'),
+      },
     ],
   },
 ];
