@@ -52,6 +52,14 @@ const JsRouting: RouteRecordRaw[] = [
         },
         component: () => import('./arrayReduceUsage'),
       },
+      {
+        path: 'functionMethods',
+        name: 'functionMethods',
+        meta: {
+          title: 'apply, call, bind方法的区别',
+        },
+        component: () => import('./functionMethods'),
+      },
     ],
   },
 ];
