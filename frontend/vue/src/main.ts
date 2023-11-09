@@ -5,6 +5,7 @@ import { App } from './App';
 import routes from './router';
 import { createRouter, createWebHistory } from 'vue-router';
 import 'ant-design-vue/dist/reset.css';
+import '@uivjs/vue-markdown-preview/markdown.css';
 
 const basename = process.env.NODE_ENV === 'production' ? '/aio-vue' : '';
 const app = createApp(App)

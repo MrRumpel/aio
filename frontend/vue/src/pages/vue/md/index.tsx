@@ -1,6 +1,5 @@
 import { defineComponent, ref } from 'vue';
 import MarkdownPreview from '@uivjs/vue-markdown-preview';
-import '@uivjs/vue-markdown-preview/markdown.css';
 import { useRoute, useRouter } from 'vue-router';
 
 export default defineComponent({
