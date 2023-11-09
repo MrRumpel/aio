@@ -9,6 +9,7 @@ import '@uivjs/vue-markdown-preview/markdown.css';
 
 const basename = process.env.NODE_ENV === 'production' ? '/aio-vue' : '';
 const app = createApp(App)
+  .use(createPinia())
   .use(createRouter({ history: createWebHistory(basename), routes }))
   .use(Antd);
 

@@ -13,14 +13,6 @@ const VueRouting: RouteRecordRaw[] = [
     component: BlankLayoutComponent,
     children: [
       {
-        path: 'test-code',
-        name: 'test-code',
-        meta: {
-          title: '测试代码',
-        },
-        component: () => import('./testCode'),
-      },
-      {
         path: 'reactivity-core',
         name: 'reactivity-core',
         meta: {
@@ -35,6 +27,14 @@ const VueRouting: RouteRecordRaw[] = [
           title: 'reactive和ref原理检测数据类型的方法',
         },
         component: () => import('./reactiveRefTypeCheck'),
+      },
+      {
+        path: 'componentCommunication',
+        name: 'componentCommunication',
+        meta: {
+          title: 'Vue 3 组件通信方式',
+        },
+        component: () => import('./componentCommunication'),
       },
     ],
   },
