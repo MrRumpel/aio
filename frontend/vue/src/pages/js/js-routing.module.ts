@@ -60,6 +60,14 @@ const JsRouting: RouteRecordRaw[] = [
         },
         component: () => import('./functionMethods'),
       },
+      {
+        path: 'arrayMethods',
+        name: 'arrayMethods',
+        meta: {
+          title: 'forEach 和 map 方法的区别',
+        },
+        component: () => import('./arrayMethods'),
+      },
     ],
   },
 ];
