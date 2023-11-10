@@ -36,6 +36,14 @@ const VueRouting: RouteRecordRaw[] = [
         },
         component: () => import('./componentCommunication'),
       },
+      {
+        path: 'useHooks',
+        name: 'useHooks',
+        meta: {
+          title: 'Vue 3 中 Hooks 函数的使用',
+        },
+        component: () => import('./useHooks'),
+      },
     ],
   },
 ];
