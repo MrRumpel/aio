@@ -44,6 +44,14 @@ const VueRouting: RouteRecordRaw[] = [
         },
         component: () => import('./useHooks'),
       },
+      {
+        path: 'watchAndWatchEffect',
+        name: 'watchAndWatchEffect',
+        meta: {
+          title: 'watch 和 watchEffect 的区别',
+        },
+        component: () => import('./watchAndWatchEffect'),
+      },
     ],
   },
 ];
