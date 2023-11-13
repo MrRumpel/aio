@@ -75,7 +75,15 @@ const JsRouting: RouteRecordRaw[] = [
           title: 'async/await 的使用',
         },
         component: () => import('./asyncAwaitExample'),
-      }
+      },
+      {
+        path: 'promiseExample',
+        name: 'promiseExample',
+        meta: {
+          title: 'Promise 的使用',
+        },
+        component: () => import('./promiseExample'),
+      },
     ],
   },
 ];
