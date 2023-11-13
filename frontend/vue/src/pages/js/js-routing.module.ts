@@ -68,6 +68,14 @@ const JsRouting: RouteRecordRaw[] = [
         },
         component: () => import('./arrayMethods'),
       },
+      {
+        path: 'asyncAwaitExample',
+        name: 'asyncAwaitExample',
+        meta: {
+          title: 'async/await 的使用',
+        },
+        component: () => import('./asyncAwaitExample'),
+      }
     ],
   },
 ];
