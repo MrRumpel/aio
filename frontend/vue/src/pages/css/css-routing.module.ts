@@ -20,6 +20,14 @@ const CssRouting: RouteRecordRaw[] = [
         },
         component: () => import('./compareVwAndPercent'),
       },
+      {
+        path: 'flexLayoutExample',
+        name: 'flexLayoutExample',
+        meta: {
+          title: 'Flex 布局示例',
+        },
+        component: () => import('./flexLayoutExample'),
+      },
     ],
   },
 ];
