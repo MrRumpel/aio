@@ -84,6 +84,46 @@ const JsRouting: RouteRecordRaw[] = [
         },
         component: () => import('./promiseExample'),
       },
+      {
+        path: 'objectIsExample',
+        name: 'objectIsExample',
+        meta: {
+          title: 'Object.is 的使用',
+        },
+        component: () => import('./objectIsExample'),
+      },
+      {
+        path: 'objectAssignExample',
+        name: 'objectAssignExample',
+        meta: {
+          title: 'Object.assign 的使用',
+        },
+        component: () => import('./objectAssignExample'),
+      },
+      // {
+      //   path: 'objectKeysExample',
+      //   name: 'objectKeysExample',
+      //   meta: {
+      //     title: 'Object.keys 的使用',
+      //   },
+      //   component: () => import('./objectKeysExample'),
+      // },
+      // {
+      //   path: 'objectValuesExample',
+      //   name: 'objectValuesExample',
+      //   meta: {
+      //     title: 'Object.values 的使用',
+      //   },
+      //   component: () => import('./objectValuesExample'),
+      // },
+      // {
+      //   path: 'objectEntriesExample',
+      //   name: 'objectEntriesExample',
+      //   meta: {
+      //     title: 'Object.entries 的使用',
+      //   },
+      //   component: () => import('./objectEntriesExample'),
+      // },
     ],
   },
 ];
