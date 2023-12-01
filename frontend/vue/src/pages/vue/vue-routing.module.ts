@@ -52,6 +52,14 @@ const VueRouting: RouteRecordRaw[] = [
         },
         component: () => import('./watchAndWatchEffect'),
       },
+      {
+        path: 'reactivityUtilities',
+        name: 'reactivityUtilities',
+        meta: {
+          title: 'Reactivity Utilities',
+        },
+        component: () => import('./reactivityUtilities'),
+      },
     ],
   },
 ];
