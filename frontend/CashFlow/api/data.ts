@@ -38,7 +38,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       // 例如，这里创建一个简单的API端点返回所有文档
       const documents = await ItemModel.find({});
       // 返回结果
-      res.status(200).json({ data: documents });
+      res.status(200).json(documents);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
@@ -50,9 +50,9 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       await connectToDatabase();
       // 你可以在这里执行任何 mongoose 操作
       // 例如，这里创建一个简单的API端点返回所有文档
-      const documents = await ItemModel.create(req.body)
+      const documents = await ItemModel.create(req.body);
       // 返回结果
-      res.status(200).json({ data: documents });
+      res.status(200).json(documents);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
