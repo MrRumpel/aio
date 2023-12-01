@@ -1,9 +1,6 @@
 {
   "functions": {
-    "api/hello.ts": {
-      "memory": 1024,
-      "maxDuration": 30
-    }
+    "api/url-example.ts": {}
   },
   "rewrites": [
     {
