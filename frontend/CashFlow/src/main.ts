@@ -6,8 +6,9 @@ import routes from './router';
 import { createRouter, createWebHistory } from 'vue-router';
 import 'ant-design-vue/dist/reset.css';
 import '@uivjs/vue-markdown-preview/markdown.css';
+import '@/assets/main.css';
 
-const basename = process.env.NODE_ENV === 'production' ? '/aio-vue' : '';
+const basename = process.env.NODE_ENV === 'production' ? '/cash-flow' : '';
 const app = createApp(App)
   .use(createPinia())
   .use(createRouter({ history: createWebHistory(basename), routes }))

@@ -2,6 +2,9 @@
   "functions": {
     "api/url-example.ts": {
       "maxDuration": 5
+    },
+    "api/data.ts": {
+      "maxDuration": 5
     }
   },
   "rewrites": [
