@@ -11,10 +11,5 @@ export default ({ command, mode }: ConfigEnv): UserConfig => ({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
-  },
-  define: {
-    'process.env': {
-      MONGODB_URI: loadEnv(mode, process.cwd()).VITE_APP_MONGODB_URI,
-    },
-  },
+  }
 });
