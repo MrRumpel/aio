@@ -37,7 +37,9 @@ export default defineComponent({
     getFc().then((e: { sum: number }[]) => {
       res.value = e as any;
       const angle = 0; // 角度
-      const dataValue = (((e.map((item) => item.sum).reduce((a, b) => a + b) + 12000) / 12000) * 100).toFixed(2);
+      const dataValue = Number(
+        (((e.map((item) => item.sum).reduce((a, b) => a + b) + 12000) / 12000) * 100).toFixed(2)
+      );
 
       setOptions({
         // backgroundColor: '#002837',
@@ -52,13 +54,13 @@ export default defineComponent({
               t: { fontSize: 22, color: '#28edf2' },
             },
           },
-        },
+        } as any,
         series: [
           /** 绘制内部圆弧-1 <right-top> */
           {
             type: 'custom',
             coordinateSystem: 'none',
-            renderItem: (params, api) => {
+            renderItem: (params: any, api: any) => {
               return {
                 type: 'arc',
                 shape: {
@@ -82,7 +84,7 @@ export default defineComponent({
           {
             type: 'custom',
             coordinateSystem: 'none',
-            renderItem: (params, api) => {
+            renderItem: (params: any, api: any) => {
               return {
                 type: 'arc',
                 shape: {
@@ -106,7 +108,7 @@ export default defineComponent({
           {
             type: 'custom',
             coordinateSystem: 'none',
-            renderItem: (params, api) => {
+            renderItem: (params: any, api: any) => {
               return {
                 type: 'arc',
                 shape: {
@@ -130,7 +132,7 @@ export default defineComponent({
           {
             type: 'custom',
             coordinateSystem: 'none',
-            renderItem: (params, api) => {
+            renderItem: (params: any, api: any) => {
               return {
                 type: 'arc',
                 shape: {
@@ -154,10 +156,10 @@ export default defineComponent({
           {
             type: 'custom',
             coordinateSystem: 'none',
-            renderItem: (params, api) => {
-              let x0 = api.getWidth() / 2;
-              let y0 = api.getHeight() / 2;
-              let r = (Math.min(api.getWidth(), api.getHeight()) / 2) * 0.66;
+            renderItem: (params: any, api: any) => {
+              const x0 = api.getWidth() / 2;
+              const y0 = api.getHeight() / 2;
+              const r = (Math.min(api.getWidth(), api.getHeight()) / 2) * 0.66;
               return {
                 type: 'circle',
                 shape: {
@@ -179,10 +181,10 @@ export default defineComponent({
           {
             type: 'custom',
             coordinateSystem: 'none',
-            renderItem: (params, api) => {
-              let x0 = api.getWidth() / 2;
-              let y0 = api.getHeight() / 2;
-              let r = (Math.min(api.getWidth(), api.getHeight()) / 2) * 0.66;
+            renderItem: (params: any, api: any) => {
+              const x0 = api.getWidth() / 2;
+              const y0 = api.getHeight() / 2;
+              const r = (Math.min(api.getWidth(), api.getHeight()) / 2) * 0.66;
               return {
                 type: 'circle',
                 shape: {
@@ -224,7 +226,7 @@ export default defineComponent({
           {
             type: 'custom',
             coordinateSystem: 'none',
-            renderItem: (params, api) => {
+            renderItem: (params: any, api: any) => {
               return {
                 type: 'circle',
                 shape: {
@@ -301,7 +303,7 @@ export default defineComponent({
             axisTick: { show: false },
             axisLabel: { show: false },
           },
-        ],
+        ] as any,
       });
     });
     return () => (
