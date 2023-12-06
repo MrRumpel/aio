@@ -28,19 +28,40 @@ export default defineComponent({
       },
     ];
     const chartRef = ref<HTMLDivElement | null>(null);
+    const chartPieRef = ref<HTMLDivElement | null>(null);
     const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>);
+    const { setOptions: setPieOptions } = useECharts(chartPieRef as Ref<HTMLDivElement>);
     const res = ref('');
     const getFc = async () => {
       const data = await fetch('/api/data');
       return data.json();
     };
-    getFc().then((e: { sum: number }[]) => {
+    getFc().then((e: { sum: number; type: number }[]) => {
       res.value = e as any;
       const angle = 0; // 角度
       const dataValue = Number(
         (((e.map((item) => item.sum).reduce((a, b) => a + b) + 12000) / 12000) * 100).toFixed(2)
       );
+      const typeMap = [
+        { type: 1, name: '债券' },
+        { type: 2, name: '其他' },
+        { type: 3, name: '券商' },
+        { type: 4, name: '银行理财' },
+        { type: 5, name: '银行存款' },
+        { type: 6, name: '股票基金' },
+      ];
 
+      const pieData = typeMap.map((item) => {
+        const value = e
+          .filter((eItem) => eItem.type === item.type)
+          .map((eItem) => eItem.sum)
+          .reduce((a, b) => a + b, 0);
+
+        return {
+          value,
+          name: item.name,
+        };
+      });
       setOptions({
         // backgroundColor: '#002837',
         title: {
@@ -305,10 +326,42 @@ export default defineComponent({
           },
         ] as any,
       });
+      setPieOptions({
+        tooltip: {
+          trigger: 'item',
+        },
+        legend: {
+          top: '5%',
+          left: 'center',
+        },
+        series: [
+          {
+            type: 'pie',
+            radius: ['30%', '60%'],
+            avoidLabelOverlap: false,
+            label: {
+              show: false,
+              position: 'center',
+            },
+            emphasis: {
+              label: {
+                show: true,
+                fontSize: 30,
+                fontWeight: 'bold',
+              },
+            },
+            labelLine: {
+              show: false,
+            },
+            data: pieData,
+          },
+        ],
+      });
     });
     return () => (
       <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
-        <div ref={chartRef} style={{ height: 'calc(80vh - 78px)' }}></div>
+        <div ref={chartRef} style={{ height: 'calc(40vh)' }}></div>
+        <div ref={chartPieRef} style={{ height: 'calc(40vh)' }}></div>
         <Table dataSource={res.value as any} columns={columns} size='small'></Table>
       </ConfigProvider>
     );
