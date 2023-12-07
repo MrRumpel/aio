@@ -1,5 +1,5 @@
 import { defineComponent, onMounted, ref, type Ref } from 'vue';
-import { Alert, Button, Card, ConfigProvider, Space, Table, theme } from 'ant-design-vue';
+import { Alert, Button, Card, ConfigProvider, Space, Table, theme, TypographyTitle } from 'ant-design-vue';
 import { useFetch } from '@/components/shared/fetch';
 import { useECharts } from '@/hooks/web/useECharts';
 import * as echarts from 'echarts/core';
@@ -34,12 +34,14 @@ export default defineComponent({
     const { setOptions } = useECharts(chartRef as Ref<HTMLDivElement>);
     const { setOptions: setPieOptions } = useECharts(chartPieRef as Ref<HTMLDivElement>);
     const res = ref('');
+    const total = ref('');
     const getFc = async () => {
       const data = await fetch('/api/data');
       return data.json();
     };
     getFc().then((e: { sum: number; type: number }[]) => {
       res.value = e as any;
+      total.value = (e.map((item) => item.sum).reduce((a, b) => a + b) + 12000).toFixed(2);
       const angle = 0; // 角度
       const dataValue = Number(
         (((e.map((item) => item.sum).reduce((a, b) => a + b) + 12000) / 12000) * 100).toFixed(2)
@@ -52,7 +54,6 @@ export default defineComponent({
         { type: 5, name: '银行存款' },
         { type: 6, name: '股票基金' },
       ];
-
       const pieData = typeMap.map((item) => {
         const value = e
           .filter((eItem) => eItem.type === item.type)
@@ -360,13 +361,48 @@ export default defineComponent({
         ],
       });
     });
+
+    const copyToClipboard = async () => {
+      let data: any = res.value; // 这里假设 res.value 是你要复制的数据
+      // 按日期排序
+      data = data.sort((a: any, b: any) => new Date(a.date).getTime() - new Date(b.date).getTime());
+      const text = data?.map((item: any) => `${item.date.split('T')[0]} ${item.sum} ${item.description}`).join('\n');
+      await navigator.clipboard.writeText(text);
+      console.log('Data copied to clipboard');
+    };
+
+    const copy = () => {
+      copyToClipboard().catch(console.error);
+    };
+
+    const exportJson = () => {
+      const data = res.value; // 这里假设 res.value 是你要导出的数据
+      const json = JSON.stringify(data);
+      const blob = new Blob([json], { type: 'application/json' });
+      const href = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = href;
+      link.download = 'data.json';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
     return () => (
       <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
+        <TypographyTitle>{total.value}</TypographyTitle>
         <div ref={chartRef} style={{ height: 'calc(40vh)' }}></div>
         <div ref={chartPieRef} style={{ height: 'calc(40vh)' }}></div>
-        <Button type='primary' onClick={() => push({ name: 'edit' })}>
-          新增
-        </Button>
+        <Space>
+          <Button type='primary' onClick={() => push({ name: 'edit' })}>
+            新增
+          </Button>
+          <Button type='primary' onClick={copy}>
+            复制
+          </Button>
+          <Button type='primary' onClick={exportJson}>
+            导出json
+          </Button>
+        </Space>
         <Table dataSource={res.value as any} columns={columns} size='small'></Table>
       </ConfigProvider>
     );
