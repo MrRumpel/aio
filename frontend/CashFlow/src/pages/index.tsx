@@ -1,13 +1,15 @@
 import { defineComponent, onMounted, ref, type Ref } from 'vue';
-import { Alert, Card, ConfigProvider, Table, theme } from 'ant-design-vue';
+import { Alert, Button, Card, ConfigProvider, Space, Table, theme } from 'ant-design-vue';
 import { useFetch } from '@/components/shared/fetch';
 import { useECharts } from '@/hooks/web/useECharts';
 import * as echarts from 'echarts/core';
 import 'echarts-liquidfill';
+import { useRoute, useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'DashboardPage',
   setup: () => {
+    const { push } = useRouter();
     // 0 亏损 1 债券 2 其他 3 券商 4 银行理财 5 银行存款 6 股票基金
     const columns = [
       {
@@ -362,6 +364,9 @@ export default defineComponent({
       <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
         <div ref={chartRef} style={{ height: 'calc(40vh)' }}></div>
         <div ref={chartPieRef} style={{ height: 'calc(40vh)' }}></div>
+        <Button type='primary' onClick={() => push({ name: 'edit' })}>
+          新增
+        </Button>
         <Table dataSource={res.value as any} columns={columns} size='small'></Table>
       </ConfigProvider>
     );

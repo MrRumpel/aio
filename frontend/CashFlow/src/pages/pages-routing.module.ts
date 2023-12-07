@@ -19,6 +19,14 @@ const pages: RouteRecordRaw[] = [
         },
         component: () => import('./index'),
       },
+      {
+        path: 'edit',
+        name: 'edit',
+        meta: {
+          title: '编辑',
+        },
+        component: () => import('./edit'),
+      },
     ],
   },
   { path: '/:(.*)*', redirect: 'pages/home' },
